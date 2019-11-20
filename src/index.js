@@ -1,132 +1,37 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-export const BarStyles = {
-  BARS: '0',
-  CANDLES: '1',
-  HOLLOW_CANDLES: '9',
-  HEIKIN_ASHI: '8',
-  LINE: '2',
-  AREA: '3',
-  RENKO: '4',
-  LINE_BREAK: '7',
-  KAGI: '5',
-  POINT_AND_FIGURE: '6'
-};
-
-export const IntervalTypes = {
-  D: 'D',
-  W: 'W'
-};
-
-export const RangeTypes = {
-  YTD: 'ytd',
-  ALL: 'all'
-};
-
-export const Themes = {
-  LIGHT: 'Light',
-  DARK: 'Dark'
-};
-
 const SCRIPT_ID = 'tradingview-widget-script';
 const CONTAINER_ID = 'tradingview-widget';
 
 export default class TradingViewWidget extends PureComponent {
   static propTypes = {
-    allow_symbol_change: PropTypes.bool,
     autosize: PropTypes.bool,
-    calendar: PropTypes.bool,
-    details: PropTypes.bool,
-    enable_publishing: PropTypes.bool,
     height: PropTypes.number,
-    hideideas: PropTypes.bool,
-    hide_legend: PropTypes.bool,
-    hide_side_toolbar: PropTypes.bool,
-    hide_top_toolbar: PropTypes.bool,
-    hotlist: PropTypes.bool,
-    interval: PropTypes.oneOf([
-      1,
-      3,
-      5,
-      15,
-      30,
-      60,
-      120,
-      180,
-      '1',
-      '3',
-      '5',
-      '15',
-      '30',
-      '60',
-      '120',
-      '180',
-      IntervalTypes.D,
-      IntervalTypes.W
-    ]),
+    greyText: PropTypes.string,
+    gridLineColor: PropTypes.string,
+    fontColor: PropTypes.string,
+    underLineColor: PropTypes.string,
+    trendLineColor: PropTypes.string,
+    symbol: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     locale: PropTypes.string,
-    news: PropTypes.arrayOf(PropTypes.string),
-    no_referral_id: PropTypes.bool,
-    popup_height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    popup_width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    range: PropTypes.oneOf([
-      '1d',
-      '5d',
-      '1m',
-      '3m',
-      '6m',
-      RangeTypes.YTD,
-      '12m',
-      '60m',
-      RangeTypes.ALL
-    ]),
-    referral_id: PropTypes.string,
-    save_image: PropTypes.bool,
-    show_popup_button: PropTypes.bool,
-    studies: PropTypes.arrayOf(PropTypes.string),
-    style: PropTypes.oneOf([
-      BarStyles.BARS,
-      BarStyles.CANDLES,
-      BarStyles.HOLLOW_CANDLES,
-      BarStyles.HEIKIN_ASHI,
-      BarStyles.LINE,
-      BarStyles.AREA,
-      BarStyles.RENKO,
-      BarStyles.LINE_BREAK,
-      BarStyles.KAGI,
-      BarStyles.POINT_AND_FIGURE
-    ]),
-    symbol: PropTypes.string.isRequired,
-    theme: PropTypes.oneOf([Themes.LIGHT, Themes.DARK]),
-    timezone: PropTypes.string,
-    toolbar_bg: PropTypes.string,
-    watchlist: PropTypes.arrayOf(PropTypes.string),
     widgetType: PropTypes.string,
     width: PropTypes.number,
-    withdateranges: PropTypes.bool
+    chartOnly: PropTypes.bool,
   };
 
   static defaultProps = {
-    allow_symbol_change: true,
     autosize: false,
-    enable_publishing: false,
-    height: 610,
-    hideideas: true,
-    hide_legend: false,
-    hide_side_toolbar: true,
-    hide_top_toolbar: false,
-    interval: IntervalTypes.D,
+    height: 400,
+    greyText: "Quotes by",
+    gridLineColor: "#e9e9ea",
+    fontColor: "#83888D",
+    underLineColor: "#dbeffb",
+    trendLineColor: "#4bafe9",
     locale: 'en',
-    save_image: true,
-    show_popup_button: false,
-    style: BarStyles.CANDLES,
-    theme: Themes.LIGHT,
-    timezone: 'Etc/UTC',
-    toolbar_bg: '#F1F3F6',
-    widgetType: 'widget',
-    width: 980,
-    withdateranges: false
+    widgetType: 'MediumWidget',
+    width: 1000,
+    chartOnly: false,
   };
 
   containerId = `${CONTAINER_ID}-${Math.random()}`;
@@ -193,18 +98,6 @@ export default class TradingViewWidget extends PureComponent {
     if (config.autosize) {
       delete config.width;
       delete config.height;
-    }
-
-    if (typeof config.interval === 'number') {
-      config.interval = config.interval.toString();
-    }
-
-    if (config.popup_width && typeof config.popup_width === 'number') {
-      config.popup_width = config.popup_width.toString();
-    }
-
-    if (config.popup_height && typeof config.popup_height === 'number') {
-      config.popup_height = config.popup_height.toString();
     }
 
     /* global TradingView */
