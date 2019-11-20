@@ -131,7 +131,7 @@ TradingViewWidget.propTypes = {
   fontColor: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   underLineColor: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   trendLineColor: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
-  symbol: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string)).isRequired,
+  symbols: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string)).isRequired,
   locale: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   widgetType: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   width: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number,

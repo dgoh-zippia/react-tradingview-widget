@@ -13,7 +13,7 @@ export default class TradingViewWidget extends PureComponent {
     fontColor: PropTypes.string,
     underLineColor: PropTypes.string,
     trendLineColor: PropTypes.string,
-    symbol: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
+    symbols: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     locale: PropTypes.string,
     widgetType: PropTypes.string,
     width: PropTypes.number,
