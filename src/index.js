@@ -18,9 +18,11 @@ export default class TradingViewWidget extends PureComponent {
     widgetType: PropTypes.string,
     width: PropTypes.number,
     chartOnly: PropTypes.bool,
+    containerId: PropTypes.string,
   };
 
   static defaultProps = {
+    containerId: CONTAINER_ID,
     autosize: false,
     height: 400,
     greyText: "Quotes by",
@@ -34,7 +36,7 @@ export default class TradingViewWidget extends PureComponent {
     chartOnly: false,
   };
 
-  containerId = `${CONTAINER_ID}-${Math.random()}`;
+  //containerId = `${CONTAINER_ID}-${Math.random()}`;
 
   componentDidMount = () => this.appendScript(this.initWidget);
 
@@ -90,10 +92,10 @@ export default class TradingViewWidget extends PureComponent {
 
   initWidget = () => {
     /* global TradingView */
-    if (typeof TradingView === 'undefined' || !document.getElementById(this.containerId)) return;
+    if (typeof TradingView === 'undefined' || !document.getElementById(this.props.containerId)) return;
 
     const { widgetType, ...widgetConfig } = this.props;
-    const config = { ...widgetConfig, container_id: this.containerId };
+    const config = { ...widgetConfig, container_id: this.props.containerId };
 
     if (config.autosize) {
       delete config.width;
@@ -106,7 +108,7 @@ export default class TradingViewWidget extends PureComponent {
 
   cleanWidget = () => {
     if (!this.canUseDOM()) return;
-    document.getElementById(this.containerId).innerHTML = '';
+    document.getElementById(this.props.containerId).innerHTML = '';
   };
 
   getStyle = () => {
@@ -117,5 +119,5 @@ export default class TradingViewWidget extends PureComponent {
     };
   };
 
-  render = () => <article id={this.containerId} style={this.getStyle()} />
+  render = () => <article id={this.props.containerId} style={this.getStyle()} />
 }

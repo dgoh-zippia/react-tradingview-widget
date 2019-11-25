@@ -49,7 +49,7 @@ var TradingViewWidget = function (_PureComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TradingViewWidget.__proto__ || Object.getPrototypeOf(TradingViewWidget)).call.apply(_ref, [this].concat(args))), _this), _this.containerId = CONTAINER_ID + '-' + Math.random(), _this.componentDidMount = function () {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TradingViewWidget.__proto__ || Object.getPrototypeOf(TradingViewWidget)).call.apply(_ref, [this].concat(args))), _this), _this.componentDidMount = function () {
       return _this.appendScript(_this.initWidget);
     }, _this.componentDidUpdate = function () {
       _this.cleanWidget();
@@ -91,13 +91,13 @@ var TradingViewWidget = function (_PureComponent) {
       };
     }, _this.initWidget = function () {
       /* global TradingView */
-      if (typeof TradingView === 'undefined' || !document.getElementById(_this.containerId)) return;
+      if (typeof TradingView === 'undefined' || !document.getElementById(_this.props.containerId)) return;
 
       var _this$props = _this.props,
           widgetType = _this$props.widgetType,
           widgetConfig = _objectWithoutProperties(_this$props, ['widgetType']);
 
-      var config = _extends({}, widgetConfig, { container_id: _this.containerId });
+      var config = _extends({}, widgetConfig, { container_id: _this.props.containerId });
 
       if (config.autosize) {
         delete config.width;
@@ -108,7 +108,7 @@ var TradingViewWidget = function (_PureComponent) {
       new TradingView[widgetType](config);
     }, _this.cleanWidget = function () {
       if (!_this.canUseDOM()) return;
-      document.getElementById(_this.containerId).innerHTML = '';
+      document.getElementById(_this.props.containerId).innerHTML = '';
     }, _this.getStyle = function () {
       if (!_this.props.autosize) return {};
       return {
@@ -116,9 +116,11 @@ var TradingViewWidget = function (_PureComponent) {
         height: '100%'
       };
     }, _this.render = function () {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('article', { id: _this.containerId, style: _this.getStyle() });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('article', { id: _this.props.containerId, style: _this.getStyle() });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+
+  //containerId = `${CONTAINER_ID}-${Math.random()}`;
 
   return TradingViewWidget;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["PureComponent"]);
@@ -135,9 +137,11 @@ TradingViewWidget.propTypes = {
   locale: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   widgetType: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   width: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number,
-  chartOnly: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool
+  chartOnly: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  containerId: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string
 };
 TradingViewWidget.defaultProps = {
+  containerId: CONTAINER_ID,
   autosize: false,
   height: 400,
   greyText: "Quotes by",
