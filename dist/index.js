@@ -127,7 +127,7 @@ var TradingViewWidget = function (_PureComponent) {
 
 TradingViewWidget.propTypes = {
   autosize: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
-  height: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number,
+  height: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   greyText: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   gridLineColor: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   fontColor: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
@@ -136,14 +136,14 @@ TradingViewWidget.propTypes = {
   symbols: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.arrayOf(__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string)).isRequired,
   locale: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   widgetType: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
-  width: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number,
+  width: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
   chartOnly: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
   containerId: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string
 };
 TradingViewWidget.defaultProps = {
   containerId: CONTAINER_ID,
   autosize: false,
-  height: 400,
+  height: '400px',
   greyText: "Quotes by",
   gridLineColor: "#e9e9ea",
   fontColor: "#83888D",
@@ -151,7 +151,7 @@ TradingViewWidget.defaultProps = {
   trendLineColor: "#4bafe9",
   locale: 'en',
   widgetType: 'MediumWidget',
-  width: 1000,
+  width: '1000px',
   chartOnly: false
 };
 /* harmony default export */ __webpack_exports__["default"] = (TradingViewWidget);

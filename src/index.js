@@ -7,7 +7,7 @@ const CONTAINER_ID = 'tradingview-widget';
 export default class TradingViewWidget extends PureComponent {
   static propTypes = {
     autosize: PropTypes.bool,
-    height: PropTypes.number,
+    height: PropTypes.string,
     greyText: PropTypes.string,
     gridLineColor: PropTypes.string,
     fontColor: PropTypes.string,
@@ -16,7 +16,7 @@ export default class TradingViewWidget extends PureComponent {
     symbols: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
     locale: PropTypes.string,
     widgetType: PropTypes.string,
-    width: PropTypes.number,
+    width: PropTypes.string,
     chartOnly: PropTypes.bool,
     containerId: PropTypes.string,
   };
@@ -24,7 +24,7 @@ export default class TradingViewWidget extends PureComponent {
   static defaultProps = {
     containerId: CONTAINER_ID,
     autosize: false,
-    height: 400,
+    height: '400px',
     greyText: "Quotes by",
     gridLineColor: "#e9e9ea",
     fontColor: "#83888D",
@@ -32,7 +32,7 @@ export default class TradingViewWidget extends PureComponent {
     trendLineColor: "#4bafe9",
     locale: 'en',
     widgetType: 'MediumWidget',
-    width: 1000,
+    width: '1000px',
     chartOnly: false,
   };
 
